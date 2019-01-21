@@ -1,7 +1,7 @@
 <template>
   <div id="container">
-    <div v-bind:class="{ countryItem: !country.voted, countryItemDisabled: country.voted }" v-for="(country, i) in countries" :key="i" @click="openCountry(country.id)">
-      <country-flag :country='country.flag' size='normal'/><div class="countryInside">{{country.name}}</div>
+    <div v-bind:class="{ countryItem: !country.Voted, countryItemDisabled: country.Voted }" v-for="(country, i) in countries" :key="i" @click="openCountry(country.ID)">
+      <country-flag :country='country.Flag' size='normal'/><div class="countryInside">{{country.Name}}</div>
     </div>
   </div>
 </template>
@@ -15,17 +15,13 @@ export default {
     CountryFlag
   },
   data: () => ({
-    countries: [
-      {id: 0, name: 'Bosnia and Herzegovina', flag: 'ba', voted: false},
-      {id: 1, name: 'Croatia', flag: 'hr', voted: false},
-      {id: 2, name: 'Serbia', flag: 'rs', voted: true},
-      {id: 3, name: 'Bulgaria', flag: 'bg', voted: false}
-    ]
+    countries: []
   }),
   created () {
     try {
-      service.get('/').then(response => {
+      service.get('/countries').then(response => {
         if (response) {
+          this.countries = response.data.data
           console.log('response: ', response)
         }
       }).catch(error => console.log(error))
