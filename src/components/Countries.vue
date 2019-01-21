@@ -6,6 +6,8 @@
   </div>
 </template>
 <script>
+import Service from '../services/index.js'
+const service = new Service()
 import CountryFlag from 'vue-country-flag'
 export default {
   name: "",
@@ -20,6 +22,17 @@ export default {
       {id: 3, name: 'Bulgaria', flag: 'bg', voted: false}
     ]
   }),
+  created () {
+    try {
+      service.get('/').then(response => {
+        if (response) {
+          console.log('response: ', response)
+        }
+      }).catch(error => console.log(error))
+    } catch (err) {
+      console.log(err)
+    }
+  },
   methods: {
     openCountry (countryId) {
       console.log('otvorio country: ', countryId)

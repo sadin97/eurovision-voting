@@ -3,6 +3,11 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
+// Axios.
+import axios from 'axios'
+import VueAxios from 'vue-axios'
+Vue.use(VueAxios, axios)
+
 // Countries flag.
 import CountryFlag from 'vue-country-flag'
 Vue.component('vue-country-flag', CountryFlag)
