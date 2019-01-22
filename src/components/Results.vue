@@ -10,7 +10,6 @@ export default {
   components: {
     GoBackArrow
   },
-  name: "",
   data: () => ({
   })
 }
