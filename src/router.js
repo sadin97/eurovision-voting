@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Home from './components/Home.vue'
 import Countries from './components/Countries.vue'
 import Results from './components/Results.vue'
+import Voting from './components/Voting.vue'
 
 Vue.use(Router)
 
@@ -22,6 +23,11 @@ export default new Router({
       path: '/results',
       name: 'results',
       component: Results
+    },
+    {
+      path: '/voting',
+      name: 'voting',
+      component: Voting
     }
   ]
 })

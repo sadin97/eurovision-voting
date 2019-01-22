@@ -31,7 +31,8 @@ export default {
   },
   methods: {
     openCountry (countryId) {
-      console.log('otvorio country: ', countryId)
+      this.$router.replace({name: 'voting'})
+      this.$store.commit('setCountryIdVoting', countryId)
     }
   }
 }
