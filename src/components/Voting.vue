@@ -15,9 +15,23 @@ export default {
     countries: []
   }),
   created () {
-    // Ovdje dohvatam sve zemlje iz baze.
+    this.getAllCountries() // Ovdje dohvatam sve zemlje iz baze.
     if (this.$store.state.countryIdVoting === null) {
       this.$router.replace({name: 'home'})
+    }
+  },
+  methods: {
+    getAllCountries () {
+      try {
+        service.get('/countries').then(response => {
+          if (response) {
+            this.countries = response.data.data
+            console.log('response: ', response)
+          }
+        }).catch(error => console.log(error))
+      } catch (err) {
+        console.log(err)
+      }
     }
   }
 }

@@ -18,21 +18,24 @@ export default {
     countries: []
   }),
   created () {
-    try {
-      service.get('/countries').then(response => {
-        if (response) {
-          this.countries = response.data.data
-          console.log('response: ', response)
-        }
-      }).catch(error => console.log(error))
-    } catch (err) {
-      console.log(err)
-    }
+    this.getAllCountries()
   },
   methods: {
     openCountry (countryId) {
       this.$router.replace({name: 'voting'})
       this.$store.commit('setCountryIdVoting', countryId)
+    },
+    getAllCountries () {
+      try {
+        service.get('/countries').then(response => {
+          if (response) {
+            this.countries = response.data.data
+            console.log('response: ', response)
+          }
+        }).catch(error => console.log(error))
+      } catch (err) {
+        console.log(err)
+      }
     }
   }
 }
