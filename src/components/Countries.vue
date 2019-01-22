@@ -1,5 +1,6 @@
 <template>
   <div id="container">
+    <GoBackArrow />
     <div v-bind:class="{ countryItem: !country.Voted, countryItemDisabled: country.Voted }" v-for="(country, i) in countries" :key="i" @click="openCountry(country.ID)">
       <country-flag :country='country.Flag' size='normal'/><div class="countryInside">{{country.Name}}</div>
     </div>

@@ -12,8 +12,8 @@
     <div class="pointList">
       <div v-for="(point, i) in points" :key="i" @click="selectParent(i)">
         <div v-bind:class="{ pointItem: !point.selected, pointItemSelected: point.selected }">{{point.score}}</div>
-        <div class="countryItem" v-for="(country, j) in countries" :key="j" v-if="point.selected">
-          <div v-if="country.ID !== countryVotingId">{{country.Name}}</div>
+        <div class="countryItem" v-for="(country, j) in countries" :key="j" v-if="(point.selected)&&(country.ID !==countryVotingId)">
+          {{country.Name}}
         </div>
       </div>
     </div>
@@ -94,13 +94,11 @@ export default {
   padding: 5px;
   width: 40%;
   margin: 0 auto;
-  border-bottom: 1px solid #eee;
   background-color: #819ccc;
+  color: #fff;
 }
-.pointItem:hover {
+.pointItemSelected:hover {
   cursor: pointer;
-  background-color: #999;
-  transition: 0.3s;
 }
 .countryItem {
   padding: 2px;
@@ -110,5 +108,11 @@ export default {
   border-bottom: 1px solid #92a5c7;
   border-left: 1px solid #92a5c7;
   border-right: 1px solid #92a5c7;
+}
+.countryItem:hover {
+  background-color: #4dd45c;
+  color: #fff;
+  transition: 0.2s;
+  cursor: pointer;
 }
 </style>
